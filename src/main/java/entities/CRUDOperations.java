@@ -65,4 +65,17 @@ public class CRUDOperations {
         em.getTransaction().commit();
         em.close();
     }
+
+    public void updateEntity(int id, String newTitle){
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        em.getTransaction().begin();
+
+        CD acd = em.find(CD.class, id);
+        acd.setTitle(newTitle);
+        em.flush();
+        System.out.println("=====  #" + id + " has been updated. =====");
+
+        em.getTransaction().commit();
+        em.close();
+    }
 }
