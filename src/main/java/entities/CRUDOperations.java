@@ -7,9 +7,9 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
-public class CRUDOperations {
+public class CRUDOperations<T> {
 
-    public void insertEntity (CD aCD){
+    public void insertEntity (T aCD){
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction et = em.getTransaction();
         et.begin();
@@ -19,7 +19,7 @@ public class CRUDOperations {
         System.out.println("Entity added!");
     }
 
-    public CD findById(int id){
+    public CD findCDById(int id){
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction et = em.getTransaction();
         et.begin();
@@ -35,7 +35,7 @@ public class CRUDOperations {
         return aCd;
     }
 
-    public void findAll(){
+    public void findAllCDs(){
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction et = em.getTransaction();
         et.begin();
@@ -55,7 +55,7 @@ public class CRUDOperations {
         em.close();
     }
 
-    public void removeEntity(int id){
+    public void removeCD(int id){
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         em.getTransaction().begin();
 
@@ -66,7 +66,7 @@ public class CRUDOperations {
         em.close();
     }
 
-    public void updateEntity(int id, String newTitle){
+    public void updateCD(int id, String newTitle){
         EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         em.getTransaction().begin();
 
